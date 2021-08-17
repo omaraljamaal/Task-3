@@ -1,0 +1,337 @@
+{
+  "intents": [
+    {
+      "intent": "ترحيب",
+      "examples": [
+        {
+          "text": "hello"
+        },
+        {
+          "text": "hi"
+        },
+        {
+          "text": "أهلا"
+        },
+        {
+          "text": "السلام عليكم"
+        },
+        {
+          "text": "صباح الخير"
+        },
+        {
+          "text": "مرحبا"
+        },
+        {
+          "text": "مساء الخير"
+        },
+        {
+          "text": "هيلو"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "حجوزات",
+      "examples": [
+        {
+          "text": "فيه طاولة فاضية"
+        },
+        {
+          "text": "متوفر حجز ؟"
+        },
+        {
+          "text": "ممكن أحجز؟"
+        },
+        {
+          "text": "هل عندكم حجوزات"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "sys-date",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-time",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "أمراض",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "التهاب الحلق",
+          "synonyms": [
+            "التهاب الزور",
+            "لوز"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "انفلونزا",
+          "synonyms": [
+            "رشح",
+            "زكام",
+            "سعال",
+            "مرشح"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "كورونا",
+          "synonyms": [
+            "فايروس كورونا",
+            "فايروس كورونا المستجد",
+            "كوفيد",
+            "كوفيد 19"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ما الوقت المناسب"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_4_1628838687282",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1628838687282",
+      "previous_sibling": "handler_7_1628838687282"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1628838756848",
+      "context": {
+        "number": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_3_1628838756848"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_1_1628838598157",
+      "context": {
+        "date": "@sys-date"
+      },
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_6_1628838598178"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "كم عدد الحضور"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_4_1628838756848",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1628838756848",
+      "previous_sibling": "handler_3_1628838756848"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1628838687282",
+      "context": {
+        "time": "@sys-time"
+      },
+      "conditions": "@sys-time",
+      "event_name": "input",
+      "dialog_node": "handler_7_1628838687282"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ما اليوم المناسب"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_1_1628838598157",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1628838598178",
+      "previous_sibling": "handler_6_1628838598178"
+    },
+    {
+      "type": "standard",
+      "title": "ترحيب",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "يا هلا  .. اسألني"
+              },
+              {
+                "text": "مرحبا  ..اتفضل"
+              },
+              {
+                "text": "ارحب  .. كيف أقدر أخدمك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#ترحيب",
+      "dialog_node": "node_1_1628833590756",
+      "previous_sibling": "مرحبا"
+    },
+    {
+      "type": "frame",
+      "title": "حجوزات",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "تم تأكيد الحجز"
+              },
+              {
+                "text": "تم الحجز بنجاح"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#حجوزات",
+      "dialog_node": "node_4_1628838514094",
+      "previous_sibling": "node_1_1628833590756"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1628838514094",
+      "variable": "$date",
+      "dialog_node": "slot_1_1628838598157"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1628838514094",
+      "variable": "$time",
+      "dialog_node": "slot_4_1628838687282",
+      "previous_sibling": "slot_1_1628838598157"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1628838514094",
+      "variable": "$number",
+      "dialog_node": "slot_4_1628838756848",
+      "previous_sibling": "slot_4_1628838687282"
+    },
+    {
+      "type": "standard",
+      "title": "أي شيء آخر",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "لم أفهم، يمكنك محاولة اعادة الصياغة"
+              },
+              {
+                "text": "هل يمكنك اعادة صياغة عبارتك؟ أنا لا فهم"
+              },
+              {
+                "text": "لم أفهم قصدك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "أي شيء آخر",
+      "previous_sibling": "node_4_1628838514094",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "مرحبا",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "مرحبا، كيف يمكنني مساعدتك؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "مرحبا"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": ":هل قصدت",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "كل ما سبق خطأ"
+    },
+    "human_agent_assist": {
+      "prompt": ":هل قصدت"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "مهارة التحدث",
+  "language": "ar",
+  "description": ""
+}
