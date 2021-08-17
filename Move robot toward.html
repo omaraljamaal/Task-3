@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>الربوت المتحرك</title>
+	<link rel="stylesheet" type="text/css" href="style sheet.css">
+</head>
+
+<body class="bg">
+   
+
+                                <!----------------------  HTML CODE !! ------------------------->
+
+
+
+
+<form action ="connect.php" method="post">
+
+ <table>
+     <th rowspan = "1">
+
+</th>
+     <th rowspan = "3">
+</th>
+ <th colspan = "1" style="    grid-row-gap: 0px;">
+
+</th>
+
+<div class="grid-container ">
+  <div ></div>
+       <div> <button class="forward" name="forward" value="forward">أمام </button></div>
+  
+<div></div>
+             <div><button class="right" name="right" value="right">يمين </button></div>
+
+
+                <div> <button class="stop" name="stop" value="stop"> قف </button></div>
+         <div><button class="left" name="left" value="left"> يسار </button></div>
+
+             <div></div>
+        <div><button class="backward" name="backward" value="backward">خلف </button></div> 
+ 
+</div>
+
+
+
+
+ 
+
+
+
+
+
+
+<div>
+</div>
+</form>
+<script>
+  window.watsonAssistantChatOptions = {
+      integrationID: "0acfe613-7343-44f6-9852-591c4f28cdca", // The ID of this integration.
+      region: "eu-gb", // The region your integration is hosted in.
+      serviceInstanceID: "201647d9-3103-4316-8cb0-6f00d6829105", // The ID of your service instance.
+      onLoad: function(instance) { instance.render(); }
+    };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+    document.head.appendChild(t);
+  });
+</script>
+</body>
+</html>
+                 <!----------------------  END OF HTML!! ------------------------->
+
+</body>
